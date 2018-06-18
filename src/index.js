@@ -7,11 +7,17 @@ export default new GraphQLScalarType({
   description: 'The `DateTime` scalar represents a date and time following the ISO 8601 standard',
   serialize(value) {
     // value sent to the client
-    return moment.utc(value).format()
+    return value
   },
   parseValue(value) {
     // value from the client
-    return value
+    if (!moment(value).isValid) {
+      throw new TypeError(
+        `DateTime must be in a recognized RFC2822 or ISO 8601 format ${String(value)}.`
+      )
+    }
+
+    return moment.utc(value).toISOString()
   },
   parseLiteral(ast) {
     if (ast.kind !== Kind.STRING) {
@@ -19,6 +25,7 @@ export default new GraphQLScalarType({
         `DateTime cannot represent non string type ${String(ast.value != null ? ast.value : null)}`
       )
     }
-    return moment.utc(value).format()
+
+    return moment.utc(value).toISOString()
   },
 })
