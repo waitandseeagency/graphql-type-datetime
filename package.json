@@ -1,6 +1,6 @@
 {
   "name": "graphql-type-datetime",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "DateTime scalar type for GraphQL.js",
   "files": [
     "lib"
