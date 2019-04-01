@@ -38,8 +38,10 @@
     "rimraf": "^2.6.2"
   },
   "dependencies": {
-    "graphql": "^0.13.2",
     "moment": "^2.22.2"
+  },
+  "peerDependencies": {
+    "graphql": "^0.13.2"
   },
   "config": {
     "commitizen": {
