@@ -26,6 +26,6 @@ export default new GraphQLScalarType({
       )
     }
 
-    return moment.utc(value).toISOString()
+    return moment.utc(ast.value).toISOString()
   },
 })
